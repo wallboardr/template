@@ -1,0 +1,19 @@
+<div ng-controller="MyScreenController">
+  <div class="form-panel" ng-show="showStep(0)">
+    <input type="url" ng-model="activeScreenEdit.data.url" placeholder="Some Remote Service URL" required>
+    <input type="text" ng-model="activeScreenEdit.data.apiKey" placeholder="Service API key" required>
+    <div class="buttons">
+      <button ng-click="getSomethingFromService(editScreenForm, activeScreenEdit)" class="success">Fetch Something</button>
+      <button ng-click="cancelEditScreen()" class="cancel">Cancel</button>
+    </div>
+  </div>
+  <div class="form-panel" ng-show="showStep(1)">
+    <div class="choices">
+      <div class="list-item" ng-repeat="something in allthings" ng-class="entityStatus(proj)" ng-click="chooseSomething(editScreenForm, proj.Id, activeScreenEdit)">{{proj.Name}}</div>
+    </div>
+    <div class="buttons">
+      <button ng-click="reset()" class="success">&lt; Prev</button>
+      <button ng-click="cancelEditScreen()" class="cancel">Cancel</button>
+    </div>
+  </div>
+</div>
